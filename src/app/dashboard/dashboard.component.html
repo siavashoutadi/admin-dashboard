@@ -9,8 +9,8 @@
     <mat-sidenav #sidenav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
       <mat-nav-list>
         <mat-accordion [displayMode]="flat">
-          <div *ngFor="let nav of sideNavItems">
-            <mat-expansion-panel *ngIf="nav.children">
+          <div *ngFor="let nav of sideNavMenuItems">
+            <mat-expansion-panel *ngIf="nav.children.length">
               <mat-expansion-panel-header>
 
                 <mat-panel-title>
@@ -22,7 +22,7 @@
                 <mat-list-item routerLink={{childNav.route}}>{{childNav.title}}</mat-list-item>
               </a>
             </mat-expansion-panel>
-            <mat-list-item *ngIf="!nav.children">
+            <mat-list-item *ngIf="!nav.children.length">
               <mat-icon matListIcon color="primary">{{nav.icon}}</mat-icon>
               <a routerLink={{nav.route}} matLine>{{nav.title}}</a>
             </mat-list-item>
