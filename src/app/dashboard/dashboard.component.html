@@ -1,3 +1,37 @@
-<p>
-  dashboard works!
-</p>
+<div class="dashboard-container" [class.dashboard-is-mobile]="mobileQuery.matches">
+  <mat-toolbar color="primary" class="dashboard-toolbar">
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="dashboard-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav #sidenav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+      <mat-nav-list>
+        <mat-accordion [displayMode]="flat">
+          <div *ngFor="let nav of sideNavItems">
+            <mat-expansion-panel *ngIf="nav.children">
+              <mat-expansion-panel-header>
+
+                <mat-panel-title>
+                  <mat-icon color="primary">{{nav.icon}}</mat-icon>
+                </mat-panel-title>
+                <mat-panel-description>{{nav.title}}</mat-panel-description>
+              </mat-expansion-panel-header>
+              <a *ngFor="let childNav of nav.children">
+                <mat-list-item routerLink={{childNav.route}}>{{childNav.title}}</mat-list-item>
+              </a>
+            </mat-expansion-panel>
+            <mat-list-item *ngIf="!nav.children">
+              <mat-icon matListIcon color="primary">{{nav.icon}}</mat-icon>
+              <a routerLink={{nav.route}} matLine>{{nav.title}}</a>
+            </mat-list-item>
+          </div>
+        </mat-accordion>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
