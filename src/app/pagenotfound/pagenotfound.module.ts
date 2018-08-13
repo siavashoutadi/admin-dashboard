@@ -9,6 +9,7 @@ import { PagenotfoundComponent } from './pagenotfound.component';
     CommonModule,
     PagenotfoundRoutingModule
   ],
+  exports: [PagenotfoundRoutingModule],
   declarations: [PagenotfoundComponent]
 })
 export class PagenotfoundModule { }
