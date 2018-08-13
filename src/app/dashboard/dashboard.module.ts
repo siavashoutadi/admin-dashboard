@@ -12,9 +12,11 @@ import {
     MatToolbarModule,
     MatListModule,
     MatExpansionModule,
-    MatRippleModule
+    MatRippleModule,
+    MatInputModule,
+    MatCardModule,
+    MatGridListModule
 } from '@angular/material';
-
 
 @NgModule({
     imports: [
@@ -27,6 +29,9 @@ import {
         MatExpansionModule,
         RouterModule,
         DashboardRoutingModule,
+        MatInputModule,
+        MatCardModule,
+        MatGridListModule,
         CommonModule
     ],
     exports: [

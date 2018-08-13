@@ -1,3 +1,40 @@
-<p>
-  edit-side-nav-menu works!
-</p>
+<div class="container">
+  <mat-card class="item">
+    <mat-card-header>
+      <mat-card-title>Add new menu items </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-form-field appearance="legacy">
+        <mat-label>Title</mat-label>
+        <input matInput>
+      </mat-form-field>
+      <mat-form-field appearance="legacy">
+        <mat-label>Route</mat-label>
+        <input matInput>
+      </mat-form-field>
+      <mat-form-field appearance="legacy">
+        <mat-label>Icon</mat-label>
+        <input matInput>
+      </mat-form-field>
+
+      <mat-card-header>
+        <mat-card-title>
+          Child item(s)
+          <button mat-icon-button (click)=onChildAddClick();>
+            <mat-icon color="primary">add_circle</mat-icon>
+          </button>
+        </mat-card-title>
+      </mat-card-header>
+      <div *ngFor="let i of children" class="item">
+        <mat-form-field appearance="legacy">
+          <mat-label>Title</mat-label>
+          <input matInput>
+        </mat-form-field>
+        <mat-form-field appearance="legacy">
+          <mat-label>Route</mat-label>
+          <input matInput>
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
