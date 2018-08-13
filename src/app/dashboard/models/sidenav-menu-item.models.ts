@@ -1,4 +1,4 @@
-import { SideNavMenuItemChild } from './sidenav-items-children.models';
+import { SideNavMenuItemChild } from './sidenav-items-child.models';
 
 export class SideNavMenuItem {
     public title: string;

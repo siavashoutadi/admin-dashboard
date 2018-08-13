@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs/internal/BehaviorSubject";
 
 import { SideNavMenuItem } from './models/sidenav-menu-item.models';
-import { SideNavMenuItemChild } from './models/sidenav-items-children.models';
+import { SideNavMenuItemChild } from './models/sidenav-items-child.models';
 
 @Injectable()
 export class DashboardService {
@@ -11,11 +11,6 @@ export class DashboardService {
   onGetSideNavMenuItems() {
     let items: SideNavMenuItem[];
     items = [
-      new SideNavMenuItem('Settings', 'settings', '',
-        [
-          new SideNavMenuItemChild('Edit Menu', 'dashboard/menu/edit')
-        ]
-      ),
       new SideNavMenuItem('Dashboard', 'dashboard', '/overview', []),
       new SideNavMenuItem('Products', 'work', '',
         [

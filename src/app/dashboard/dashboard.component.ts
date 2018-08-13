@@ -5,6 +5,7 @@ import { Subscription } from "rxjs/internal/Subscription";
 
 import { DashboardService } from './dashboard.service';
 import { SideNavMenuItem } from './models/sidenav-menu-item.models';
+import { SideNavMenuItemChild } from './models/sidenav-items-child.models';
 
 @Component({
   selector: 'siaout-dashboard',
@@ -13,6 +14,7 @@ import { SideNavMenuItem } from './models/sidenav-menu-item.models';
 })
 export class DashboardComponent implements OnDestroy, OnInit {
   mobileQuery: MediaQueryList;
+  defaultSideNavMenuItems: SideNavMenuItem[]
   sideNavMenuItems: SideNavMenuItem[];
   subscription: Subscription;
 
@@ -27,9 +29,18 @@ export class DashboardComponent implements OnDestroy, OnInit {
   ngOnInit() {
     let items: SideNavMenuItem[]
 
+    this.defaultSideNavMenuItems =
+      [
+        new SideNavMenuItem('Settings', 'settings', '',
+          [
+            new SideNavMenuItemChild('Edit Menu', 'dashboard/sidenav/menu/edit')
+          ]
+        )
+      ]
+
     this.subscription = this.dashboardService.sideNavMenuItems.subscribe(
       (data: SideNavMenuItem[]) => {
-        this.sideNavMenuItems = data;
+        this.sideNavMenuItems = this.defaultSideNavMenuItems.concat(data);
       });
 
     this.dashboardService.onGetSideNavMenuItems();
