@@ -22,10 +22,12 @@
                 <mat-list-item routerLink={{childNav.route}}>{{childNav.title}}</mat-list-item>
               </a>
             </mat-expansion-panel>
-            <mat-list-item *ngIf="!nav.children.length">
-              <mat-icon matListIcon color="primary">{{nav.icon}}</mat-icon>
-              <a routerLink={{nav.route}} matLine>{{nav.title}}</a>
-            </mat-list-item>
+            <div *ngIf="!nav.children.length">
+              <mat-list-item routerLink={{nav.route}}>
+                <mat-icon matListIcon color="primary">{{nav.icon}}</mat-icon>
+                <a matLine>{{nav.title}}</a>
+              </mat-list-item>
+            </div>
           </div>
         </mat-accordion>
       </mat-nav-list>
