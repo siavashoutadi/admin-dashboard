@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
+import { MatSnackBar } from '@angular/material';
+
+import { DashboardService } from '../dashboard.service';
+import { SideNavMenuItem } from '../models/sidenav-menu-item.models';
+import { SideNavMenuItemChild } from '../models/sidenav-items-child.models';
 
 @Component({
   selector: 'siaout-edit-side-nav-menu',
@@ -6,15 +12,35 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./edit-side-nav-menu.component.scss']
 })
 export class EditSideNavMenuComponent implements OnInit {
-  childNum: number = 0;
-  children: number[] = [];
+  newMenuItemForm: FormGroup;
 
-  constructor() { }
+  constructor(private dashboardService: DashboardService) { }
 
   ngOnInit() {
+    this.initForm();
+  }
+
+  initForm() {
+    this.newMenuItemForm = new FormGroup({
+      "title": new FormControl(null, Validators.required),
+      "route": new FormControl(null, Validators.required),
+      "icon": new FormControl(null, Validators.required),
+      "children": new FormArray([])
+    });
   }
 
   onChildAddClick() {
-    this.children.push(1);
+    (<FormArray>this.newMenuItemForm.get('children')).push(
+      new FormGroup({
+        "title": new FormControl(null, Validators.required),
+        "route": new FormControl(null, Validators.required)
+      })
+    );
+  }
+
+  onNewMenuItemAdd() {
+    let sideNavMenuItem: SideNavMenuItem;
+    sideNavMenuItem = this.newMenuItemForm.value;
+    this.dashboardService.onSaveSideNavMenuItem(sideNavMenuItem);
   }
 }

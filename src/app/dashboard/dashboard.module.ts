@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
@@ -14,8 +15,7 @@ import {
     MatExpansionModule,
     MatRippleModule,
     MatInputModule,
-    MatCardModule,
-    MatGridListModule
+    MatCardModule
 } from '@angular/material';
 
 @NgModule({
@@ -31,7 +31,7 @@ import {
         DashboardRoutingModule,
         MatInputModule,
         MatCardModule,
-        MatGridListModule,
+        ReactiveFormsModule,
         CommonModule
     ],
     exports: [
