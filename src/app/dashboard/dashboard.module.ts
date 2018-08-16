@@ -15,6 +15,7 @@ import {
     MatExpansionModule,
     MatRippleModule,
     MatInputModule,
+    MatAutocompleteModule,
     MatCardModule
 } from '@angular/material';
 
@@ -32,6 +33,7 @@ import {
         MatInputModule,
         MatCardModule,
         ReactiveFormsModule,
+        MatAutocompleteModule,
         CommonModule
     ],
     exports: [

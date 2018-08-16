@@ -38,7 +38,6 @@
               <input matInput formControlName="route">
             </mat-form-field>
           </div>
-
         </div>
         <div align="right">
           <button mat-raised-button color="primary" type="submit" [disabled]="!newMenuItemForm.valid">Add</button>
@@ -46,5 +45,61 @@
       </form>
     </mat-expansion-panel>
 
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> Edit menu items </mat-panel-title>
+      </mat-expansion-panel-header>
+      <form [formGroup]="editMenuItemsForm" (ngSubmit)="onEditMenuItems()">
+        <div formArrayName="menuItems">
+          <div *ngFor="let menuItem of editMenuItemsForm.get('menuItems').controls; let i = index" [formGroupName]="i">
+            <mat-accordion>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>{{title.value}}</mat-panel-title>
+                </mat-expansion-panel-header>
+                <div style="float:right">
+                  <button mat-icon-button type="button">
+                    <mat-icon color="primary">save</mat-icon>
+                  </button>
+                  <button mat-icon-button type="button">
+                    <mat-icon color="primary">remove_circle_outline</mat-icon>
+                  </button>
+                </div>
+                <mat-form-field appearance="legacy">
+                  <mat-label>Title</mat-label>
+                  <input matInput formControlName="title" #title>
+                </mat-form-field>
+                <mat-form-field appearance="legacy" *ngIf="menuItem.get('children').controls[0] === undefined">
+                  <mat-label>Route</mat-label>
+                  <input matInput formControlName="route">
+                </mat-form-field>
+                <mat-form-field appearance="legacy">
+                  <mat-label>Icon</mat-label>
+                  <input matInput formControlName="icon" #icon>
+                </mat-form-field>
+                <p *ngIf="menuItem.get('children').controls[0] !== undefined">Sub menu:</p>
+                <div formArrayName="children">
+                  <div *ngFor="let child of menuItem.get('children').controls; let j = index" [formGroupName]="j">
+                    <mat-form-field appearance="legacy">
+                      <mat-label>title</mat-label>
+                      <input matInput formControlName="title">
+                    </mat-form-field>
+                    <mat-form-field appearance="legacy">
+                      <mat-label>Route</mat-label>
+                      <input matInput formControlName="route">
+                    </mat-form-field>
+                    <div style="float:right">
+                      <button mat-icon-button type="button">
+                        <mat-icon color="primary">remove_circle_outline</mat-icon>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </div>
+        </div>
+      </form>
+    </mat-expansion-panel>
   </mat-accordion>
 </div>

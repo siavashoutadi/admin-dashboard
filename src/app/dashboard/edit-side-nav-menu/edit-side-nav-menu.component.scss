@@ -1,7 +1,11 @@
 .container {
-    padding: 20px;
+  padding: 20px;
 }
 
 mat-form-field {
-    padding: 0 20px;
+  padding: 0 20px;
+}
+
+mat-expansion-panel {
+  margin: 20px 0 !important;
 }
