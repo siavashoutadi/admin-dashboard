@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
-import { MatSnackBar } from '@angular/material';
 
 import { DashboardService } from '../dashboard.service';
 import { SideNavMenuItem } from '../models/sidenav-menu-item.models';
-import { SideNavMenuItemChild } from '../models/sidenav-items-child.models';
 
 @Component({
   selector: 'siaout-edit-side-nav-menu',
@@ -13,7 +11,6 @@ import { SideNavMenuItemChild } from '../models/sidenav-items-child.models';
 })
 export class EditSideNavMenuComponent implements OnInit {
   newMenuItemForm: FormGroup;
-  menuItemIcon = "";
 
   constructor(private dashboardService: DashboardService) { }
 
