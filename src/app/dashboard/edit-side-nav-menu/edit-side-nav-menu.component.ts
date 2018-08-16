@@ -13,6 +13,7 @@ import { SideNavMenuItemChild } from '../models/sidenav-items-child.models';
 })
 export class EditSideNavMenuComponent implements OnInit {
   newMenuItemForm: FormGroup;
+  menuItemIcon = "";
 
   constructor(private dashboardService: DashboardService) { }
 

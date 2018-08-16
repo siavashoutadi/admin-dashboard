@@ -15,8 +15,9 @@
         </mat-form-field>
         <mat-form-field appearance="legacy">
           <mat-label>Icon</mat-label>
-          <input matInput name="icon" formControlName="icon">
+          <input matInput name="icon" formControlName="icon" [(ngModel)]="menuItemIcon">
         </mat-form-field>
+        <mat-icon matListIcon color="primary">{{menuItemIcon}}</mat-icon>
 
         <mat-card-header>
           <mat-card-title>
