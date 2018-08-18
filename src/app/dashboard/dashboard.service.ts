@@ -45,4 +45,14 @@ export class DashboardService {
 
     this.sideNavMenuItems.next(items);
   }
+
+  onDeleteSideNavMenuItem(menuItem: SideNavMenuItem) {
+    let items: SideNavMenuItem[];
+    this.subscription = this.sideNavMenuItems.subscribe(
+      (data: SideNavMenuItem[]) => {
+        items = data;
+      });
+
+    this.sideNavMenuItems.next(items.filter(item => item !== menuItem));
+  }
 }

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
-import { Subscription } from "rxjs/internal/Subscription";
+import { MatDialog } from '@angular/material';
+import { Subscription } from 'rxjs/internal/Subscription';
+
+import { DeleteMenuItemComponent } from '../delete-menu-item/delete-menu-item.component';
 
 import { DashboardService } from '../dashboard.service';
 import { SideNavMenuItem } from '../models/sidenav-menu-item.models';
@@ -15,8 +18,9 @@ export class EditSideNavMenuComponent implements OnInit {
   editMenuItemsForm: FormGroup;
   sideNavMenuItems: SideNavMenuItem[];
   subscription: Subscription;
+  deleteMenuItemDialogResult: boolean;
 
-  constructor(private dashboardService: DashboardService) { }
+  constructor(private dashboardService: DashboardService, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.subscription = this.dashboardService.sideNavMenuItems.subscribe(
@@ -37,7 +41,6 @@ export class EditSideNavMenuComponent implements OnInit {
     this.editMenuItemsForm = new FormGroup({
       "menuItems": this.getMenuItemsAsArray()
     });
-    console.log(this.editMenuItemsForm)
   }
 
   getMenuItemsAsArray() {
@@ -79,5 +82,23 @@ export class EditSideNavMenuComponent implements OnInit {
     let sideNavMenuItem: SideNavMenuItem;
     sideNavMenuItem = this.newMenuItemForm.value;
     this.dashboardService.onSaveSideNavMenuItem(sideNavMenuItem);
+  }
+
+  onDeleteMenuItem(menuItemIndex: number) {
+    let item = this.sideNavMenuItems[menuItemIndex];
+    this.openDialog(item);
+  }
+
+  openDialog(item: SideNavMenuItem) {
+    const dialogRef = this.dialog.open(DeleteMenuItemComponent, {
+      data: {
+        menuItem: item
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.dashboardService.onDeleteSideNavMenuItem(item);
+      }
+    });
   }
 }

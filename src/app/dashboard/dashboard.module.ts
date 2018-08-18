@@ -6,6 +6,7 @@ import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardService } from './dashboard.service';
 import { EditSideNavMenuComponent } from './edit-side-nav-menu/edit-side-nav-menu.component';
+import { DeleteMenuItemComponent } from './delete-menu-item/delete-menu-item.component';
 import {
     MatSidenavModule,
     MatButtonModule,
@@ -16,8 +17,10 @@ import {
     MatRippleModule,
     MatInputModule,
     MatAutocompleteModule,
-    MatCardModule
+    MatCardModule,
+    MatDialogModule
 } from '@angular/material';
+
 
 @NgModule({
     imports: [
@@ -34,6 +37,7 @@ import {
         MatCardModule,
         ReactiveFormsModule,
         MatAutocompleteModule,
+        MatDialogModule,
         CommonModule
     ],
     exports: [
@@ -42,7 +46,11 @@ import {
     ],
     declarations: [
         DashboardComponent,
-        EditSideNavMenuComponent
+        EditSideNavMenuComponent,
+        DeleteMenuItemComponent
+    ],
+    entryComponents: [
+        DeleteMenuItemComponent
     ],
     providers: [DashboardService]
 })
