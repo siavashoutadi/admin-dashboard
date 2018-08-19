@@ -53,7 +53,7 @@
         <div formArrayName="menuItems">
           <div *ngFor="let menuItem of editMenuItemsForm.get('menuItems').controls; let i = index" [formGroupName]="i">
             <mat-accordion>
-              <mat-expansion-panel>
+              <mat-expansion-panel [expanded]="editingMenuIndex === i">
                 <mat-expansion-panel-header>
                   <mat-panel-title>{{title.value}}</mat-panel-title>
                 </mat-expansion-panel-header>
@@ -89,7 +89,7 @@
                       <input matInput formControlName="route">
                     </mat-form-field>
                     <div style="float:right">
-                      <button mat-icon-button type="button">
+                      <button mat-icon-button type="button" (click)="onDeleteSubMenuItem(i, j)">
                         <mat-icon color="primary">remove_circle_outline</mat-icon>
                       </button>
                     </div>

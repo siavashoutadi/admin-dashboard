@@ -18,7 +18,7 @@ export class EditSideNavMenuComponent implements OnInit {
   editMenuItemsForm: FormGroup;
   sideNavMenuItems: SideNavMenuItem[];
   subscription: Subscription;
-  deleteMenuItemDialogResult: boolean;
+  editingMenuIndex: number;
 
   constructor(private dashboardService: DashboardService, public dialog: MatDialog) { }
 
@@ -86,18 +86,33 @@ export class EditSideNavMenuComponent implements OnInit {
 
   onDeleteMenuItem(menuItemIndex: number) {
     let item = this.sideNavMenuItems[menuItemIndex];
-    this.openDialog(item);
+    this.openDialog(item, null);
   }
 
-  openDialog(item: SideNavMenuItem) {
+  onDeleteSubMenuItem(menuItemIndex: number, submenuItemIndex: number) {
+    let item = this.sideNavMenuItems[menuItemIndex];
+    this.openDialog(item, submenuItemIndex);
+    this.editingMenuIndex = menuItemIndex;
+  }
+
+  openDialog(item: SideNavMenuItem, subMenuIndex: number) {
+    let itemTitle = item.title;
+    if (subMenuIndex !== null) {
+      itemTitle = item.children[subMenuIndex].title;
+    }
+
     const dialogRef = this.dialog.open(DeleteMenuItemComponent, {
       data: {
-        menuItem: item
+        itemTitle: itemTitle
       }
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.dashboardService.onDeleteSideNavMenuItem(item);
+        if (subMenuIndex === null) {
+          this.dashboardService.onDeleteSideNavMenuItem(item);
+        } else {
+          this.dashboardService.onDeleteSideNavSubMenuItem(item, subMenuIndex);
+        }
       }
     });
   }
