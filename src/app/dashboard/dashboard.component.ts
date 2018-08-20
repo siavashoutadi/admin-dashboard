@@ -31,9 +31,9 @@ export class DashboardComponent implements OnDestroy, OnInit {
 
     this.defaultSideNavMenuItems =
       [
-        new SideNavMenuItem('Settings', 'settings', '',
+        new SideNavMenuItem('F90453EC712CE4505CC425E7E881E1D58EA274C3', 'Settings', 'settings', '',
           [
-            new SideNavMenuItemChild('Edit Menu', 'dashboard/sidenav/menu/edit')
+            new SideNavMenuItemChild('DAFE0B2EB1203BF19D1DE74D13ECE0A386F39D0D', 'Edit Menu', 'dashboard/sidenav/menu/edit')
           ]
         )
       ]

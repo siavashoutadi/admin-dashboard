@@ -13,19 +13,19 @@ export class DashboardService {
   onGetSideNavMenuItems() {
     let items: SideNavMenuItem[];
     items = [
-      new SideNavMenuItem('Dashboard', 'dashboard', '/overview', []),
-      new SideNavMenuItem('Products', 'work', '',
+      new SideNavMenuItem('1', 'Dashboard', 'dashboard', '/overview', []),
+      new SideNavMenuItem('2', 'Products', 'work', '',
         [
-          new SideNavMenuItemChild('Add', 'products/add'),
-          new SideNavMenuItemChild('Edit', 'products/edit'),
-          new SideNavMenuItemChild('remove', 'products/remove')
+          new SideNavMenuItemChild('1', 'Add', 'products/add'),
+          new SideNavMenuItemChild('2', 'Edit', 'products/edit'),
+          new SideNavMenuItemChild('3', 'remove', 'products/remove')
         ]
       ),
-      new SideNavMenuItem('Users', 'face', '',
+      new SideNavMenuItem('3', 'Users', 'face', '',
         [
-          new SideNavMenuItemChild('Add', 'users/add'),
-          new SideNavMenuItemChild('Edit', 'users/edit'),
-          new SideNavMenuItemChild('remove', 'users/remove')
+          new SideNavMenuItemChild('1', 'Add', 'users/add'),
+          new SideNavMenuItemChild('2', 'Edit', 'users/edit'),
+          new SideNavMenuItemChild('3', 'remove', 'users/remove')
         ]
       )
     ]
@@ -46,27 +46,37 @@ export class DashboardService {
     this.sideNavMenuItems.next(items);
   }
 
-  onDeleteSideNavMenuItem(menuItem: SideNavMenuItem) {
+  onDeleteSideNavMenuItem(menuItemId: string) {
     let items: SideNavMenuItem[];
     this.subscription = this.sideNavMenuItems.subscribe(
       (data: SideNavMenuItem[]) => {
         items = data;
       });
 
-    this.sideNavMenuItems.next(items.filter(item => item !== menuItem));
+    this.sideNavMenuItems.next(items.filter(item => item.id !== menuItemId));
   }
 
-  onDeleteSideNavSubMenuItem(menuItem: SideNavMenuItem, submenuItemIndex: number) {
+  onDeleteSideNavSubMenuItem(menuItemId: string, submenuItemId: string) {
     let items: SideNavMenuItem[];
     this.subscription = this.sideNavMenuItems.subscribe(
       (data: SideNavMenuItem[]) => {
         items = data;
       });
 
+    let item = null;
     let itemIndex = null;
     for (let i = 0; i < items.length; i++) {
-      if (items[i] === menuItem) {
+      if (items[i].id === menuItemId) {
         itemIndex = i;
+        item = items[i];
+        break;
+      }
+    }
+
+    let submenuItemIndex = null;
+    for (let i = 0; i < items[itemIndex].children.length; i++) {
+      if (item.children[i].id === submenuItemId) {
+        submenuItemIndex = i;
         break;
       }
     }

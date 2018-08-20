@@ -106,12 +106,13 @@ export class EditSideNavMenuComponent implements OnInit {
         itemTitle: itemTitle
       }
     });
+
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         if (subMenuIndex === null) {
-          this.dashboardService.onDeleteSideNavMenuItem(item);
+          this.dashboardService.onDeleteSideNavMenuItem(item.id);
         } else {
-          this.dashboardService.onDeleteSideNavSubMenuItem(item, subMenuIndex);
+          this.dashboardService.onDeleteSideNavSubMenuItem(item.id, item.children[subMenuIndex].id);
         }
       }
     });
