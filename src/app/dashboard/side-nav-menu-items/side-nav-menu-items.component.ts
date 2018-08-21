@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { MatDialog } from '@angular/material';
 
 import { SideNavMenuItem } from '../models/sidenav-menu-item.models';
 import { DashboardService } from '../dashboard.service';
+import { DeleteMenuItemComponent } from '../delete-menu-item/delete-menu-item.component';
 
 @Component({
   selector: 'siaout-side-nav-menu-items',
@@ -13,7 +15,7 @@ export class SideNavMenuItemsComponent implements OnInit {
   sideNavMenuItems: SideNavMenuItem[];
   subscription: Subscription;
 
-  constructor(private dashboardService: DashboardService) { }
+  constructor(private dashboardService: DashboardService, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.subscription = this.dashboardService.sideNavMenuItems.subscribe(
@@ -21,5 +23,23 @@ export class SideNavMenuItemsComponent implements OnInit {
         this.sideNavMenuItems = data;
       });
     this.dashboardService.onGetSideNavMenuItems();
+  }
+
+  onDeleteMenuItem(item: SideNavMenuItem) {
+    this.openDialog(item);
+  }
+
+  openDialog(item: SideNavMenuItem) {
+    const dialogRef = this.dialog.open(DeleteMenuItemComponent, {
+      data: {
+        itemTitle: item.title
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.dashboardService.onDeleteSideNavMenuItem(item.id);
+      }
+    });
   }
 }
