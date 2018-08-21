@@ -7,6 +7,7 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardService } from './dashboard.service';
 import { EditSideNavMenuComponent } from './edit-side-nav-menu/edit-side-nav-menu.component';
 import { DeleteMenuItemComponent } from './delete-menu-item/delete-menu-item.component';
+import { SideNavMenuItemsComponent } from './side-nav-menu-items/side-nav-menu-items.component';
 import {
     MatSidenavModule,
     MatButtonModule,
@@ -47,7 +48,8 @@ import {
     declarations: [
         DashboardComponent,
         EditSideNavMenuComponent,
-        DeleteMenuItemComponent
+        DeleteMenuItemComponent,
+        SideNavMenuItemsComponent
     ],
     entryComponents: [
         DeleteMenuItemComponent
