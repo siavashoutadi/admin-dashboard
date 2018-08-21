@@ -10,78 +10,58 @@ export class DashboardService {
   sideNavMenuItems = new BehaviorSubject<SideNavMenuItem[]>(undefined);
   subscription: Subscription;
 
-  onGetSideNavMenuItems() {
-    let items: SideNavMenuItem[];
-    items = [
-      new SideNavMenuItem('1', 'Dashboard', 'dashboard', '/overview', []),
-      new SideNavMenuItem('2', 'Products', 'work', '',
-        [
-          new SideNavMenuItemChild('1', 'Add', 'products/add'),
-          new SideNavMenuItemChild('2', 'Edit', 'products/edit'),
-          new SideNavMenuItemChild('3', 'remove', 'products/remove')
-        ]
-      ),
-      new SideNavMenuItem('3', 'Users', 'face', '',
-        [
-          new SideNavMenuItemChild('1', 'Add', 'users/add'),
-          new SideNavMenuItemChild('2', 'Edit', 'users/edit'),
-          new SideNavMenuItemChild('3', 'remove', 'users/remove')
-        ]
-      )
-    ]
+  items: SideNavMenuItem[] = [
+    new SideNavMenuItem('1', 'Dashboard', 'dashboard', '/overview', []),
+    new SideNavMenuItem('2', 'Products', 'work', '',
+      [
+        new SideNavMenuItemChild('1', 'Add', 'products/add'),
+        new SideNavMenuItemChild('2', 'Edit', 'products/edit'),
+        new SideNavMenuItemChild('3', 'remove', 'products/remove')
+      ]
+    ),
+    new SideNavMenuItem('3', 'Users', 'face', '',
+      [
+        new SideNavMenuItemChild('1', 'Add', 'users/add'),
+        new SideNavMenuItemChild('2', 'Edit', 'users/edit'),
+        new SideNavMenuItemChild('3', 'remove', 'users/remove')
+      ]
+    )
+  ]
 
-    this.sideNavMenuItems.next(items);
+  onGetSideNavMenuItems() {
+    this.sideNavMenuItems.next(this.items);
   }
 
   onSaveSideNavMenuItem(menuItem: SideNavMenuItem) {
-    let items: SideNavMenuItem[];
-    items = [
-      menuItem
-    ]
-    this.subscription = this.sideNavMenuItems.subscribe(
-      (data: SideNavMenuItem[]) => {
-        items = items.concat(data);
-      });
-
-    this.sideNavMenuItems.next(items);
+    this.items = this.items.concat(menuItem);
+    this.sideNavMenuItems.next(this.items);
   }
 
   onDeleteSideNavMenuItem(menuItemId: string) {
-    let items: SideNavMenuItem[];
-    this.subscription = this.sideNavMenuItems.subscribe(
-      (data: SideNavMenuItem[]) => {
-        items = data;
-      });
-
-    this.sideNavMenuItems.next(items.filter(item => item.id !== menuItemId));
+    this.items = this.items.filter(item => item.id !== menuItemId)
+    this.sideNavMenuItems.next(this.items);
   }
 
   onDeleteSideNavSubMenuItem(menuItemId: string, submenuItemId: string) {
-    let items: SideNavMenuItem[];
-    this.subscription = this.sideNavMenuItems.subscribe(
-      (data: SideNavMenuItem[]) => {
-        items = data;
-      });
-
     let item = null;
     let itemIndex = null;
-    for (let i = 0; i < items.length; i++) {
-      if (items[i].id === menuItemId) {
+    for (let i = 0; i < this.items.length; i++) {
+      if (this.items[i].id === menuItemId) {
         itemIndex = i;
-        item = items[i];
+        item = this.items[i];
         break;
       }
     }
 
     let submenuItemIndex = null;
-    for (let i = 0; i < items[itemIndex].children.length; i++) {
+    for (let i = 0; i < this.items[itemIndex].children.length; i++) {
       if (item.children[i].id === submenuItemId) {
         submenuItemIndex = i;
         break;
       }
     }
 
-    items[itemIndex].children.splice(submenuItemIndex, 1);
-    this.sideNavMenuItems.next(items);
+    this.items[itemIndex].children.splice(submenuItemIndex, 1);
+    this.sideNavMenuItems.next(this.items);
   }
 }
