@@ -6,7 +6,7 @@ import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardService } from './dashboard.service';
 import { EditSideNavMenuComponent } from './edit-side-nav-menu/edit-side-nav-menu.component';
-import { DeleteMenuItemComponent } from './delete-menu-item/delete-menu-item.component';
+import { DeleteMenuItemDialogComponent } from './delete-menu-item-dialog/delete-menu-item-dialog.component';
 import { SideNavMenuItemsComponent } from './side-nav-menu-items/side-nav-menu-items.component';
 import {
     MatSidenavModule,
@@ -48,11 +48,11 @@ import {
     declarations: [
         DashboardComponent,
         EditSideNavMenuComponent,
-        DeleteMenuItemComponent,
+        DeleteMenuItemDialogComponent,
         SideNavMenuItemsComponent
     ],
     entryComponents: [
-        DeleteMenuItemComponent
+        DeleteMenuItemDialogComponent
     ],
     providers: [DashboardService]
 })

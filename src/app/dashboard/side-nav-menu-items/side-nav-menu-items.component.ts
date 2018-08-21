@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material';
 
 import { SideNavMenuItem } from '../models/sidenav-menu-item.models';
 import { DashboardService } from '../dashboard.service';
-import { DeleteMenuItemComponent } from '../delete-menu-item/delete-menu-item.component';
+import { DeleteMenuItemDialogComponent } from '../delete-menu-item-dialog/delete-menu-item-dialog.component';
 
 @Component({
   selector: 'siaout-side-nav-menu-items',
@@ -30,7 +30,7 @@ export class SideNavMenuItemsComponent implements OnInit {
   }
 
   openDialog(item: SideNavMenuItem) {
-    const dialogRef = this.dialog.open(DeleteMenuItemComponent, {
+    const dialogRef = this.dialog.open(DeleteMenuItemDialogComponent, {
       data: {
         itemTitle: item.title
       }

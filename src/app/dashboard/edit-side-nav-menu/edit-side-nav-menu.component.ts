@@ -3,7 +3,7 @@ import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { MatDialog } from '@angular/material';
 import { Subscription } from 'rxjs/internal/Subscription';
 
-import { DeleteMenuItemComponent } from '../delete-menu-item/delete-menu-item.component';
+import { DeleteMenuItemDialogComponent } from '../delete-menu-item-dialog/delete-menu-item-dialog.component';
 
 import { DashboardService } from '../dashboard.service';
 import { SideNavMenuItem } from '../models/sidenav-menu-item.models';
@@ -101,7 +101,7 @@ export class EditSideNavMenuComponent implements OnInit {
       itemTitle = item.children[subMenuIndex].title;
     }
 
-    const dialogRef = this.dialog.open(DeleteMenuItemComponent, {
+    const dialogRef = this.dialog.open(DeleteMenuItemDialogComponent, {
       data: {
         itemTitle: itemTitle
       }
