@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+
 
 import { SideNavMenuItem } from '../models/sidenav-menu-item.models';
 import { DashboardService } from '../dashboard.service';
@@ -15,7 +17,7 @@ export class SideNavMenuItemsComponent implements OnInit {
   sideNavMenuItems: SideNavMenuItem[];
   subscription: Subscription;
 
-  constructor(private dashboardService: DashboardService, private dialog: MatDialog) { }
+  constructor(private dashboardService: DashboardService, private dialog: MatDialog, private router: Router) { }
 
   ngOnInit() {
     this.subscription = this.dashboardService.sideNavMenuItems.subscribe(
@@ -41,5 +43,9 @@ export class SideNavMenuItemsComponent implements OnInit {
         this.dashboardService.onDeleteSideNavMenuItem(item.id);
       }
     });
+  }
+
+  onViewMenuItem(item: SideNavMenuItem) {
+    this.router.navigate(['/dashboard', 'sidenav', 'menu', 'item', item.id]);
   }
 }

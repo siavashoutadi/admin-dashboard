@@ -32,6 +32,10 @@ export class DashboardService {
     this.sideNavMenuItems.next(this.items);
   }
 
+  onGetSideNavMenuItem(id: string) {
+    return this.items.filter(item => item.id === id)[0]
+  }
+
   onSaveSideNavMenuItem(menuItem: SideNavMenuItem) {
     this.items = this.items.concat(menuItem);
     this.sideNavMenuItems.next(this.items);
