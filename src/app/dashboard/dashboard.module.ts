@@ -9,6 +9,7 @@ import { EditSideNavMenuComponent } from './edit-side-nav-menu/edit-side-nav-men
 import { DeleteMenuItemDialogComponent } from './delete-menu-item-dialog/delete-menu-item-dialog.component';
 import { SideNavMenuItemsComponent } from './side-nav-menu-items/side-nav-menu-items.component';
 import { SideNavMenuItemComponent } from './side-nav-menu-item/side-nav-menu-item.component';
+import { SideNavMenuItemEditComponent } from './side-nav-menu-item-edit/side-nav-menu-item-edit.component';
 import {
     MatSidenavModule,
     MatButtonModule,
@@ -22,8 +23,6 @@ import {
     MatCardModule,
     MatDialogModule
 } from '@angular/material';
-
-
 
 @NgModule({
     imports: [
@@ -52,7 +51,8 @@ import {
         EditSideNavMenuComponent,
         DeleteMenuItemDialogComponent,
         SideNavMenuItemsComponent,
-        SideNavMenuItemComponent
+        SideNavMenuItemComponent,
+        SideNavMenuItemEditComponent
     ],
     entryComponents: [
         DeleteMenuItemDialogComponent

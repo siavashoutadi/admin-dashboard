@@ -48,4 +48,8 @@ export class SideNavMenuItemsComponent implements OnInit {
   onViewMenuItem(item: SideNavMenuItem) {
     this.router.navigate(['/dashboard', 'sidenav', 'menu', 'item', item.id]);
   }
+
+  onEditMenuItem(item: SideNavMenuItem) {
+    this.router.navigate(['/dashboard', 'sidenav', 'menu', 'item', item.id, 'edit']);
+  }
 }
