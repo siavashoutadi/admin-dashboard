@@ -29,7 +29,7 @@
                 <mat-label>Route</mat-label>
                 <input matInput formControlName="route">
               </mat-form-field>
-              <button mat-icon-button type="button" (click)="onDeleteSubMenuItem()">
+              <button mat-icon-button type="button" (click)="onDeleteSubMenuItem(menuItem, i)">
                 <mat-icon color="warn">remove_circle</mat-icon>
               </button>
             </div>
@@ -50,7 +50,7 @@
               <mat-icon>save</mat-icon>
               Save
             </button>
-            <button mat-button color="warn" type="button">
+            <button mat-button color="warn" type="button" (click)="onDeleteMenuItem(menuItem)">
               <mat-icon>delete</mat-icon>
               Delete
             </button>
