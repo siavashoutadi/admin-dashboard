@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 import { FormGroup, FormControl, FormArray } from '@angular/forms';
+
 
 import { SideNavMenuItem } from '../models/sidenav-menu-item.models';
 import { DashboardService } from '../dashboard.service';
@@ -15,7 +17,8 @@ export class SideNavMenuItemEditComponent implements OnInit {
   menuItem: SideNavMenuItem;
   editMenuItemsForm: FormGroup;
 
-  constructor(private dashboardService: DashboardService, private activatedRoute: ActivatedRoute) { }
+  constructor(private dashboardService: DashboardService,
+    private activatedRoute: ActivatedRoute, private location: Location) { }
 
   ngOnInit() {
     const id = this.activatedRoute.snapshot.params['id']
@@ -52,5 +55,9 @@ export class SideNavMenuItemEditComponent implements OnInit {
 
   onDeleteSubMenuItem() {
 
+  }
+
+  onBack() {
+    this.location.back();
   }
 }
