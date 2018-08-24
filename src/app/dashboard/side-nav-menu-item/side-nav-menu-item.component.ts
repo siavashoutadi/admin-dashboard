@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { DashboardService } from '../dashboard.service';
@@ -16,6 +16,7 @@ export class SideNavMenuItemComponent implements OnInit {
 
   constructor(private dashboardService: DashboardService,
     private activatedRoute: ActivatedRoute,
+    private router: Router,
     private location: Location) { }
 
   ngOnInit() {
@@ -25,5 +26,9 @@ export class SideNavMenuItemComponent implements OnInit {
 
   onBack() {
     this.location.back();
+  }
+
+  onEdit(item: SideNavMenuItem) {
+    this.router.navigate(['/dashboard', 'sidenav', 'menu', 'item', item.id, 'edit']);
   }
 }
