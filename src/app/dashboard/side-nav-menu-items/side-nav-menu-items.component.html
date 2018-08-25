@@ -1,10 +1,17 @@
 <div class="container">
   <mat-card>
-    <mat-card-header>
-      <mat-card-title>
-        <p style="font-size: 2em"> Menu items </p>
-      </mat-card-title>
-    </mat-card-header>
+    <mat-list style="padding-bottom: 30px;">
+      <mat-list-item>
+        <div mat-line>
+          <p style="font-size: 2em" mat-card-title> Menu items </p>
+        </div>
+        <div>
+          <button mat-mini-fab color="warn" type="button" (click)="onAddMenuItem()">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+      </mat-list-item>
+    </mat-list>
     <mat-card-content>
       <mat-list>
         <div *ngFor="let item of sideNavMenuItems">

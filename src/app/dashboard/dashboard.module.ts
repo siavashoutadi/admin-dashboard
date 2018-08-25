@@ -10,6 +10,7 @@ import { DeleteMenuItemDialogComponent } from './delete-menu-item-dialog/delete-
 import { SideNavMenuItemsComponent } from './side-nav-menu-items/side-nav-menu-items.component';
 import { SideNavMenuItemComponent } from './side-nav-menu-item/side-nav-menu-item.component';
 import { SideNavMenuItemEditComponent } from './side-nav-menu-item-edit/side-nav-menu-item-edit.component';
+import { SideNavMenuItemNewComponent } from './side-nav-menu-item-new/side-nav-menu-item-new.component';
 import {
     MatSidenavModule,
     MatButtonModule,
@@ -54,7 +55,8 @@ import {
         DeleteMenuItemDialogComponent,
         SideNavMenuItemsComponent,
         SideNavMenuItemComponent,
-        SideNavMenuItemEditComponent
+        SideNavMenuItemEditComponent,
+        SideNavMenuItemNewComponent
     ],
     entryComponents: [
         DeleteMenuItemDialogComponent
