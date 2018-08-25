@@ -21,7 +21,8 @@ import {
     MatInputModule,
     MatAutocompleteModule,
     MatCardModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSnackBarModule
 } from '@angular/material';
 
 @NgModule({
@@ -40,6 +41,7 @@ import {
         ReactiveFormsModule,
         MatAutocompleteModule,
         MatDialogModule,
+        MatSnackBarModule,
         CommonModule
     ],
     exports: [

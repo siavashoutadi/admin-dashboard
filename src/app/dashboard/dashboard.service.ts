@@ -68,4 +68,13 @@ export class DashboardService {
     this.items[itemIndex].children.splice(submenuItemIndex, 1);
     this.sideNavMenuItems.next(this.items);
   }
+
+  onUpdateSideNavMenuItem(item: SideNavMenuItem) {
+    for (let i = 0; i < this.items.length; i++) {
+      if (this.items[i].id === item.id) {
+        this.items[i] = item;
+        break;
+      }
+    }
+  }
 }

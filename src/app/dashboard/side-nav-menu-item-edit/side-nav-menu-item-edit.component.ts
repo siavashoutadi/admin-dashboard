@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatSnackBar } from '@angular/material';
 import { Location } from '@angular/common';
 import { FormGroup, FormControl, FormArray } from '@angular/forms';
 
@@ -23,7 +23,8 @@ export class SideNavMenuItemEditComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private location: Location,
-    private dialog: MatDialog) { }
+    private dialog: MatDialog,
+    public snackBar: MatSnackBar) { }
 
   ngOnInit() {
     const id = this.activatedRoute.snapshot.params['id']
@@ -34,6 +35,7 @@ export class SideNavMenuItemEditComponent implements OnInit {
   initForm() {
     this.editMenuItemsForm = new FormGroup({
       "menuItem": new FormGroup({
+        "id": new FormControl(this.menuItem.id),
         "title": new FormControl(this.menuItem.title),
         "route": new FormControl(this.menuItem.route),
         "icon": new FormControl(this.menuItem.icon),
@@ -47,6 +49,7 @@ export class SideNavMenuItemEditComponent implements OnInit {
     for (let i = 0; i < item.children.length; i++) {
       let child = item.children[i];
       items.push(new FormGroup({
+        "id": new FormControl(child.id),
         "title": new FormControl(child.title),
         "route": new FormControl(child.route)
       }));
@@ -55,7 +58,24 @@ export class SideNavMenuItemEditComponent implements OnInit {
   }
 
   onEditMenuItem() {
+    let item: SideNavMenuItem = this.menuItem;
+    const editedItem: SideNavMenuItem = this.editMenuItemsForm.value.menuItem;
+    item.icon = editedItem.icon;
+    item.route = editedItem.route;
+    item.title = editedItem.title;
+    item.children.forEach(subMenu => {
+      editedItem.children.forEach(editedSubMenu => {
+        if (subMenu.id === editedSubMenu.id) {
+          subMenu.route = editedSubMenu.route;
+          subMenu.title = editedSubMenu.title;
+        }
+      });
+    });
+    this.dashboardService.onUpdateSideNavMenuItem(item);
 
+    this.snackBar.open(item.title + " saved!", "close", {
+      duration: 2000
+    });
   }
 
   onDeleteSubMenuItem(item: SideNavMenuItem, submenuItemIndex: number) {
