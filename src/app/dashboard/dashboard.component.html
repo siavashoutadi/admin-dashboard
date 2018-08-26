@@ -13,7 +13,6 @@
             <div *ngFor="let nav of sideNavMenuItems">
               <mat-expansion-panel *ngIf="nav.children.length">
                 <mat-expansion-panel-header>
-
                   <mat-panel-title>
                     <mat-icon color="primary">{{nav.icon}}</mat-icon>
                   </mat-panel-title>
@@ -26,7 +25,9 @@
               <div *ngIf="!nav.children.length">
                 <mat-list-item routerLink={{nav.route}}>
                   <mat-icon matListIcon color="primary">{{nav.icon}}</mat-icon>
-                  <a matLine>{{nav.title}}</a>
+                  <a matLine>
+                    <mat-panel-description>{{nav.title}}</mat-panel-description>
+                  </a>
                 </mat-list-item>
               </div>
             </div>
