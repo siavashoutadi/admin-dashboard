@@ -81,7 +81,7 @@ export class EditSideNavMenuComponent implements OnInit {
   onNewMenuItemAdd() {
     let sideNavMenuItem: SideNavMenuItem;
     sideNavMenuItem = this.newMenuItemForm.value;
-    this.dashboardService.onSaveSideNavMenuItem(sideNavMenuItem);
+    this.dashboardService.onAddSideNavMenuItem(sideNavMenuItem);
   }
 
   onDeleteMenuItem(menuItemIndex: number) {

@@ -1,3 +1,48 @@
-<p>
-  side-nav-menu-item-new works!
-</p>
+<div class="container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title class="title"> Menu Item </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="newMenuItemForm" (ngSubmit)="onNewMenuItemAdd(f)" #f="ngForm">
+        <mat-form-field appearance="legacy">
+          <mat-label>Title</mat-label>
+          <input matInput name="title" formControlName="title">
+        </mat-form-field>
+        <mat-form-field appearance="legacy">
+          <mat-label>Route</mat-label>
+          <input matInput name="route" formControlName="route">
+        </mat-form-field>
+        <mat-form-field appearance="legacy">
+          <mat-label>Icon</mat-label>
+          <input matInput name="icon" formControlName="icon" #menuItemIcon>
+        </mat-form-field>
+        <mat-icon matListIcon color="primary">{{menuItemIcon.value}}</mat-icon>
+
+        <mat-card-header>
+          <mat-card-title class="title">
+            Child item(s)
+            <button mat-icon-button (click)=onChildAddClick(); type="button">
+              <mat-icon color="primary">add_circle</mat-icon>
+            </button>
+          </mat-card-title>
+        </mat-card-header>
+        <div formArrayName="children">
+          <div *ngFor="let child of newMenuItemForm.get('children').controls; let i = index" [formGroupName]="i">
+            <mat-form-field appearance="legacy">
+              <mat-label>Title</mat-label>
+              <input matInput formControlName="title">
+            </mat-form-field>
+            <mat-form-field appearance="legacy">
+              <mat-label>Route</mat-label>
+              <input matInput formControlName="route">
+            </mat-form-field>
+          </div>
+        </div>
+        <div align="right">
+          <button mat-raised-button color="primary" type="submit" [disabled]="!newMenuItemForm.valid">Add</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

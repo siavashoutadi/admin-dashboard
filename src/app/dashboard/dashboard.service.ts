@@ -36,7 +36,7 @@ export class DashboardService {
     return this.items.filter(item => item.id === id)[0]
   }
 
-  onSaveSideNavMenuItem(menuItem: SideNavMenuItem) {
+  onAddSideNavMenuItem(menuItem: SideNavMenuItem) {
     this.items = this.items.concat(menuItem);
     this.sideNavMenuItems.next(this.items);
   }
