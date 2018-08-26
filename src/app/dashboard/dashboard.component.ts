@@ -33,8 +33,7 @@ export class DashboardComponent implements OnDestroy, OnInit {
       [
         new SideNavMenuItem('F90453EC712CE4505CC425E7E881E1D58EA274C3', 'Settings', 'settings', '',
           [
-            new SideNavMenuItemChild('DAFE0B2EB1203BF19D1DE74D13ECE0A386F39D0D', 'Menu', 'dashboard/sidenav/menu/items'),
-            new SideNavMenuItemChild('B9E6EE38FB3E6A3FE06F2AC916FED3F0E1E47425', 'Edit Menu', 'dashboard/sidenav/menu/edit')
+            new SideNavMenuItemChild('DAFE0B2EB1203BF19D1DE74D13ECE0A386F39D0D', 'Menu', 'dashboard/sidenav/menu/items')
           ]
         )
       ]

@@ -5,7 +5,6 @@ import { RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardService } from './dashboard.service';
-import { EditSideNavMenuComponent } from './edit-side-nav-menu/edit-side-nav-menu.component';
 import { DeleteMenuItemDialogComponent } from './delete-menu-item-dialog/delete-menu-item-dialog.component';
 import { SideNavMenuItemsComponent } from './side-nav-menu-items/side-nav-menu-items.component';
 import { SideNavMenuItemComponent } from './side-nav-menu-item/side-nav-menu-item.component';
@@ -51,7 +50,6 @@ import {
     ],
     declarations: [
         DashboardComponent,
-        EditSideNavMenuComponent,
         DeleteMenuItemDialogComponent,
         SideNavMenuItemsComponent,
         SideNavMenuItemComponent,
