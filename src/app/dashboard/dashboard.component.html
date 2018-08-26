@@ -1,39 +1,41 @@
-<div class="dashboard-container" [class.dashboard-is-mobile]="mobileQuery.matches">
-  <mat-toolbar color="primary" class="dashboard-toolbar">
-    <button mat-icon-button (click)="sidenav.toggle()">
-      <mat-icon>menu</mat-icon>
-    </button>
-  </mat-toolbar>
+<div [class]="themeClass">
+  <div class="dashboard-container" [class.dashboard-is-mobile]="mobileQuery.matches">
+    <mat-toolbar color="primary" class="dashboard-toolbar">
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </mat-toolbar>
 
-  <mat-sidenav-container class="dashboard-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
-    <mat-sidenav #sidenav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
-      <mat-nav-list>
-        <mat-accordion [displayMode]="flat">
-          <div *ngFor="let nav of sideNavMenuItems">
-            <mat-expansion-panel *ngIf="nav.children.length">
-              <mat-expansion-panel-header>
+    <mat-sidenav-container class="dashboard-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+      <mat-sidenav #sidenav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+        <mat-nav-list>
+          <mat-accordion [displayMode]="flat">
+            <div *ngFor="let nav of sideNavMenuItems">
+              <mat-expansion-panel *ngIf="nav.children.length">
+                <mat-expansion-panel-header>
 
-                <mat-panel-title>
-                  <mat-icon color="primary">{{nav.icon}}</mat-icon>
-                </mat-panel-title>
-                <mat-panel-description>{{nav.title}}</mat-panel-description>
-              </mat-expansion-panel-header>
-              <a *ngFor="let childNav of nav.children">
-                <mat-list-item routerLink={{childNav.route}}>{{childNav.title}}</mat-list-item>
-              </a>
-            </mat-expansion-panel>
-            <div *ngIf="!nav.children.length">
-              <mat-list-item routerLink={{nav.route}}>
-                <mat-icon matListIcon color="primary">{{nav.icon}}</mat-icon>
-                <a matLine>{{nav.title}}</a>
-              </mat-list-item>
+                  <mat-panel-title>
+                    <mat-icon color="primary">{{nav.icon}}</mat-icon>
+                  </mat-panel-title>
+                  <mat-panel-description>{{nav.title}}</mat-panel-description>
+                </mat-expansion-panel-header>
+                <a *ngFor="let childNav of nav.children">
+                  <mat-list-item routerLink={{childNav.route}}>{{childNav.title}}</mat-list-item>
+                </a>
+              </mat-expansion-panel>
+              <div *ngIf="!nav.children.length">
+                <mat-list-item routerLink={{nav.route}}>
+                  <mat-icon matListIcon color="primary">{{nav.icon}}</mat-icon>
+                  <a matLine>{{nav.title}}</a>
+                </mat-list-item>
+              </div>
             </div>
-          </div>
-        </mat-accordion>
-      </mat-nav-list>
-    </mat-sidenav>
-    <mat-sidenav-content>
-      <router-outlet></router-outlet>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+          </mat-accordion>
+        </mat-nav-list>
+      </mat-sidenav>
+      <mat-sidenav-content>
+        <router-outlet></router-outlet>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>
 </div>

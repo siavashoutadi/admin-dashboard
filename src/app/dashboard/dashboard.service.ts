@@ -10,6 +10,9 @@ export class DashboardService {
   sideNavMenuItems = new BehaviorSubject<SideNavMenuItem[]>(undefined);
   subscription: Subscription;
 
+  defaultTheme: string = "indigo-pink-theme";
+  themeClass = new BehaviorSubject<string>(undefined);
+
   items: SideNavMenuItem[] = [
     new SideNavMenuItem('1', 'Dashboard', 'dashboard', '/overview', []),
     new SideNavMenuItem('2', 'Products', 'work', '',
@@ -27,6 +30,10 @@ export class DashboardService {
       ]
     )
   ]
+
+  onGetTheme() {
+    this.themeClass.next(this.defaultTheme);
+  }
 
   onGetSideNavMenuItems() {
     this.sideNavMenuItems.next(this.items);
@@ -76,5 +83,9 @@ export class DashboardService {
         break;
       }
     }
+  }
+
+  changeTheme(theme: string) {
+    this.themeClass.next(theme);
   }
 }

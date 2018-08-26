@@ -5,12 +5,14 @@ import { SideNavMenuItemsComponent } from './side-nav-menu-items/side-nav-menu-i
 import { SideNavMenuItemComponent } from './side-nav-menu-item/side-nav-menu-item.component';
 import { SideNavMenuItemEditComponent } from './side-nav-menu-item-edit/side-nav-menu-item-edit.component';
 import { SideNavMenuItemNewComponent } from './side-nav-menu-item-new/side-nav-menu-item-new.component';
+import { DashboardThemeComponent } from './dashboard-theme/dashboard-theme.component';
 
 const dashboardRoutes: Routes = [
     { path: 'dashboard/sidenav/menu/items', component: SideNavMenuItemsComponent },
     { path: 'dashboard/sidenav/menu/item/:id', component: SideNavMenuItemComponent },
     { path: 'dashboard/sidenav/menu/item/:id/edit', component: SideNavMenuItemEditComponent },
-    { path: 'dashboard/sidenav/menu/items/new', component: SideNavMenuItemNewComponent }
+    { path: 'dashboard/sidenav/menu/items/new', component: SideNavMenuItemNewComponent },
+    { path: 'dashboard/theme', component: DashboardThemeComponent }
 ]
 
 @NgModule({

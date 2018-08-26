@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
@@ -10,6 +10,7 @@ import { SideNavMenuItemsComponent } from './side-nav-menu-items/side-nav-menu-i
 import { SideNavMenuItemComponent } from './side-nav-menu-item/side-nav-menu-item.component';
 import { SideNavMenuItemEditComponent } from './side-nav-menu-item-edit/side-nav-menu-item-edit.component';
 import { SideNavMenuItemNewComponent } from './side-nav-menu-item-new/side-nav-menu-item-new.component';
+import { DashboardThemeComponent } from './dashboard-theme/dashboard-theme.component';
 import {
     MatSidenavModule,
     MatButtonModule,
@@ -22,8 +23,11 @@ import {
     MatAutocompleteModule,
     MatCardModule,
     MatDialogModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatRadioModule,
+    MatGridListModule
 } from '@angular/material';
+
 
 @NgModule({
     imports: [
@@ -39,9 +43,12 @@ import {
         MatInputModule,
         MatCardModule,
         ReactiveFormsModule,
+        FormsModule,
         MatAutocompleteModule,
         MatDialogModule,
         MatSnackBarModule,
+        MatRadioModule,
+        MatGridListModule,
         CommonModule
     ],
     exports: [
@@ -54,7 +61,8 @@ import {
         SideNavMenuItemsComponent,
         SideNavMenuItemComponent,
         SideNavMenuItemEditComponent,
-        SideNavMenuItemNewComponent
+        SideNavMenuItemNewComponent,
+        DashboardThemeComponent
     ],
     entryComponents: [
         DeleteMenuItemDialogComponent

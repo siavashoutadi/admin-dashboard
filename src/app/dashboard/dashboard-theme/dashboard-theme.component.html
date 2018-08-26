@@ -1,0 +1,59 @@
+<div class="container">
+  <mat-card>
+    <p class="title"> Themes: </p>
+    <mat-card-content>
+      <mat-radio-group [(ngModel)]="theme">
+        <mat-grid-list cols="2" rowHeight="2:1">
+          <mat-grid-tile>
+            <div class="container">
+              <mat-radio-button value="indigo-pink-theme">
+                <img src="/assets/indigo-pink.png" class="image">
+                <a href="/assets/indigo-pink.png">
+                  <mat-icon>image_search</mat-icon>
+                </a>
+              </mat-radio-button>
+            </div>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <div class="container">
+              <mat-radio-button value="deeppurple-amber-theme">
+                <img src="/assets/deeppurple-amber.png" class="image">
+                <a href="/assets/deeppurple-amber.png">
+                  <mat-icon>image_search</mat-icon>
+                </a>
+              </mat-radio-button>
+            </div>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <div class="container">
+              <mat-radio-button value="pink-bluegrey-theme">
+                <img src="/assets/pink-bluegrey.png" class="image">
+                <a href="/assets/pink-bluegrey.png">
+                  <mat-icon>image_search</mat-icon>
+                </a>
+              </mat-radio-button>
+            </div>
+          </mat-grid-tile>
+          <mat-grid-tile>
+            <div class="container">
+              <mat-radio-button value="purple-green-theme">
+                <img src="/assets/purple-green.png" class="image">
+                <a href="/assets/purple-green.png">
+                  <mat-icon>image_search</mat-icon>
+                </a>
+              </mat-radio-button>
+            </div>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </mat-radio-group>
+      <mat-card-actions>
+        <mat-list>
+          <mat-list-item>
+            <p mat-line></p>
+            <button mat-button type="button" color="primary" (click)="onApply()">Apply</button>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-actions>
+    </mat-card-content>
+  </mat-card>
+</div>
