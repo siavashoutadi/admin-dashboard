@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { PagenotfoundRoutingModule } from './pagenotfound-routing.module';
 import { PagenotfoundComponent } from './pagenotfound.component';
+import { MatCardModule } from '@angular/material';
 
 @NgModule({
   imports: [
     CommonModule,
-    PagenotfoundRoutingModule
+    PagenotfoundRoutingModule,
+    MatCardModule
   ],
   exports: [PagenotfoundRoutingModule],
   declarations: [PagenotfoundComponent]
