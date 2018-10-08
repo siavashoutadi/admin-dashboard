@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PagenotfoundModule } from './pagenotfound/pagenotfound.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { OverviewComponent } from './overview/overview.component';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { OverviewComponent } from './overview/overview.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     DashboardModule,
+    AuthModule,
     PagenotfoundModule
   ],
   providers: [],
