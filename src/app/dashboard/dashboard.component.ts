@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { OverlayContainer } from '@angular/cdk/overlay';
-import { Subscription } from "rxjs/internal/Subscription";
+import { Subscription } from "rxjs";
 
 import { DashboardService } from './dashboard.service';
 import { SideNavMenuItem } from './models/sidenav-menu-item.models';

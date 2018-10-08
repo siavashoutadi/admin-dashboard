@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
-import { BehaviorSubject } from "rxjs/internal/BehaviorSubject";
-import { Subscription } from "rxjs/internal/Subscription";
+import { BehaviorSubject, Subscription } from "rxjs";
 
 import { SideNavMenuItem } from './models/sidenav-menu-item.models';
 import { SideNavMenuItemChild } from './models/sidenav-items-child.models';

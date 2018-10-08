@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray, NgForm } from '@angular/forms';
-import { Subscription } from 'rxjs/internal/Subscription';
+import { Subscription } from 'rxjs';
 
 import { DashboardService } from '../dashboard.service';
 import { SideNavMenuItem } from '../models/sidenav-menu-item.models';
