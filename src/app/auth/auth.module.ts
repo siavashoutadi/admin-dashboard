@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { keycloakInitializer } from './keycloak-initializer';
+import { AuthGuard } from './auth-guard.service';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { keycloakInitializer } from './keycloak-initializer';
       useFactory: keycloakInitializer,
       multi: true,
       deps: [KeycloakService]
-    }
+    },
+    AuthGuard
   ]
 })
 export class AuthModule { }

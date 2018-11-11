@@ -6,12 +6,13 @@ import { SideNavMenuItemComponent } from './side-nav-menu-item/side-nav-menu-ite
 import { SideNavMenuItemEditComponent } from './side-nav-menu-item-edit/side-nav-menu-item-edit.component';
 import { SideNavMenuItemNewComponent } from './side-nav-menu-item-new/side-nav-menu-item-new.component';
 import { DashboardThemeComponent } from './dashboard-theme/dashboard-theme.component';
+import { AuthGuard } from '../auth/auth-guard.service';
 
 const dashboardRoutes: Routes = [
-    { path: 'dashboard/sidenav/menu/items', component: SideNavMenuItemsComponent },
-    { path: 'dashboard/sidenav/menu/item/:id', component: SideNavMenuItemComponent },
-    { path: 'dashboard/sidenav/menu/item/:id/edit', component: SideNavMenuItemEditComponent },
-    { path: 'dashboard/sidenav/menu/items/new', component: SideNavMenuItemNewComponent },
+    { path: 'dashboard/sidenav/menu/items', component: SideNavMenuItemsComponent, data: { roles: ["admin"] }, canActivate: [AuthGuard] },
+    { path: 'dashboard/sidenav/menu/item/:id', component: SideNavMenuItemComponent, data: { roles: ["admin"] }, canActivate: [AuthGuard] },
+    { path: 'dashboard/sidenav/menu/item/:id/edit', component: SideNavMenuItemEditComponent, data: { roles: ["admin"] }, canActivate: [AuthGuard] },
+    { path: 'dashboard/sidenav/menu/items/new', component: SideNavMenuItemNewComponent, data: { roles: ["admin"] }, canActivate: [AuthGuard] },
     { path: 'dashboard/theme', component: DashboardThemeComponent }
 ]
 
