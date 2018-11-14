@@ -28,7 +28,7 @@
           </mat-card-title>
         </mat-card-header>
         <div formArrayName="children">
-          <div *ngFor="let child of newMenuItemForm.get('children').controls; let i = index" [formGroupName]="i">
+          <div *ngFor="let child of newMenuItemForm.get('children')['controls']; let i = index" [formGroupName]="i">
             <mat-form-field appearance="legacy">
               <mat-label>Title</mat-label>
               <input matInput formControlName="title">

@@ -9,7 +9,7 @@
     <mat-sidenav-container class="dashboard-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
       <mat-sidenav #sidenav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
         <mat-nav-list>
-          <mat-accordion [displayMode]="flat">
+          <mat-accordion>
             <div *ngFor="let nav of sideNavMenuItems">
               <mat-expansion-panel *ngIf="nav.children.length">
                 <mat-expansion-panel-header>
