@@ -17,3 +17,19 @@ steps:
     npm install
     ng build --prod --aot --build-optimizer --extract-css --output-hashing=all
   displayName: 'npm install and build'
+
+- task: Docker@0
+  displayName: 'Build an image'
+  inputs:
+    containerregistrytype: 'Container Registry'
+
+    dockerRegistryConnection: dockerhub
+
+- task: Docker@0
+  displayName: 'Push an image'
+  inputs:
+    containerregistrytype: 'Container Registry'
+
+    dockerRegistryConnection: dockerhub
+
+    action: 'Push an image'
