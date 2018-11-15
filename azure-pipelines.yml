@@ -21,15 +21,16 @@ steps:
 - task: Docker@0
   displayName: 'Build an image'
   inputs:
+    includeSourceTags: true
+    includeLatestTag: true
     containerregistrytype: 'Container Registry'
-
     dockerRegistryConnection: dockerhub
 
 - task: Docker@0
   displayName: 'Push an image'
   inputs:
+    includeSourceTags: true
+    includeLatestTag: true
     containerregistrytype: 'Container Registry'
-
     dockerRegistryConnection: dockerhub
-
     action: 'Push an image'
