@@ -23,6 +23,7 @@ steps:
   inputs:
     includeSourceTags: true
     includeLatestTag: true
+    imageName: '$(Build.Repository.Name):latest'
     containerregistrytype: 'Container Registry'
     dockerRegistryConnection: dockerhub
 
@@ -31,6 +32,7 @@ steps:
   inputs:
     includeSourceTags: true
     includeLatestTag: true
+    imageName: '$(Build.Repository.Name):latest'
     containerregistrytype: 'Container Registry'
     dockerRegistryConnection: dockerhub
     action: 'Push an image'
